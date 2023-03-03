@@ -2,6 +2,8 @@ import { menuArray } from "./data.js";
 
 const basket = []
 
+// event listeners
+
 document.addEventListener('click', function(e) {
     if (e.target.dataset.itemAdd) {
         handleAddItem(e.target.dataset.itemAdd)
@@ -32,8 +34,7 @@ function handleRemoveItem(itemId) {
     updateBasket()
 }
 
-
-
+// menu functions
 
 function render() {
     getMenuItems()
@@ -63,9 +64,7 @@ function getMenuItems(){
     menuItems.innerHTML += menuHtml
 }
 
-
-
-
+// basket functions
 
 function updateBasket() {
     toggleBasket()

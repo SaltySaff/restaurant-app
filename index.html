@@ -35,6 +35,31 @@
             <button class="place-order-btn">Complete Order</button>
         </section>
         <div id="emoji"></div>
+        <div class="payment-modal">
+            <h1>Enter card details</h1>
+            <div class="form-container">
+
+                <form>
+                    <input 
+                        type="text" 
+                        name="fullname" 
+                        id="fullname" 
+                        placeholder="Enter your name" 
+                        required>
+                    <input type="number" 
+                        name="card-number" 
+                        class="card-number" 
+                        placeholder="Enter card number" 
+                        required>
+                    <input 
+                        type="number" 
+                        name="cvv" class="cvv" 
+                        placeholder="Enter CVV" 
+                        required>
+                    <button type="submit">Pay</button>
+                </form>
+            </div>
+        </div>
     </main>
     
 </body>
