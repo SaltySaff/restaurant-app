@@ -108,7 +108,7 @@ header {
 }
 
 .order-summary {
-    display: flex;
+    display: none;
     gap: 50px;
     flex-direction: column;
     margin: 50px 100px;

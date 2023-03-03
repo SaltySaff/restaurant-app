@@ -3,8 +3,11 @@ import { menuArray } from "./data.js";
 const basket = []
 
 document.addEventListener('click', function(e) {
-    if (e.target.dataset.item) {
-        handleAddItem(e.target.dataset.item)
+    if (e.target.dataset.itemAdd) {
+        handleAddItem(e.target.dataset.itemAdd)
+    }
+    else if (e.target.dataset.itemRemove) {
+        handleRemoveItem(e.target.dataset.itemRemove)
     }
 })
 
@@ -16,43 +19,24 @@ function handleAddItem(itemId) {
     updateBasket()
 }
 
+function handleRemoveItem(itemId) {
+    const targetObject = menuArray.filter(function(menuItem) {
+        return menuItem.id == itemId
+    })[0]
+    basket.forEach(function(menuItem, index) {
+        if (menuItem.id == itemId) {
+            basket.splice(index, 1)
+            console.log(basket)
+        }
+    })
+    updateBasket()
+}
+
+
+
+
 function render() {
     getMenuItems()
-}
-
-function updateBasket() {
-    let basketHtml = ''
-    const orderItemsContainer = document.querySelector('.order-items-container')
-
-    console.log(basket)
-    basket.forEach(function(menuItem) {
-        basketHtml += 
-        `
-            <div class="order-item">
-                <div class="order-item-left">
-                    <h2 class="order-item">${menuItem.name}</h2>
-                    <button class="remove-item-btn">remove</button>
-                </div>
-                <div class="order-item-right">
-                    <h3 class="order-item-price">$${menuItem.price}</h3>
-                </div>
-            </div>
-        `
-    })
-    orderItemsContainer.innerHTML = basketHtml
-    updateTotal()
-}
-
-function updateTotal() {
-    document.querySelector('.total-price-num').textContent = `$${getTotalPrice()}`
-}
-
-function getTotalPrice() {
-    let total = 0
-    basket.forEach(function(menuItem) {
-        total += menuItem.price
-    })
-    return total
 }
 
 function getMenuItems(){
@@ -71,12 +55,64 @@ function getMenuItems(){
                 </div>
             </div>
             <div class="menu-container-right">
-                <button class="add-to-basket-btn" data-item=${menuItem.id}>+</button>
+                <button class="add-to-basket-btn" data-item-add=${menuItem.id}>+</button>
             </div>
             </div>
         `
     })
     menuItems.innerHTML += menuHtml
+}
+
+
+
+
+
+function updateBasket() {
+    toggleBasket()
+
+    let basketHtml = ''
+    const orderItemsContainer = document.querySelector('.order-items-container')
+
+    basket.forEach(function(menuItem) {
+        basketHtml += 
+        `
+            <div class="order-item">
+                <div class="order-item-left">
+                    <h2 class="order-item">${menuItem.name}</h2>
+                    <button class="remove-item-btn" data-item-remove=${menuItem.id}>remove</button>
+                </div>
+                <div class="order-item-right">
+                    <h3 class="order-item-price">$${menuItem.price}</h3>
+                </div>
+            </div>
+        `
+    })
+    orderItemsContainer.innerHTML = basketHtml
+    updateTotal()
+}
+
+function toggleBasket() {
+    const orderSummary = document.querySelector('.order-summary')
+    if (basket.length > 0) {
+        console.log('full', basket)
+        orderSummary.style.display = 'flex'
+    } else {
+        console.log('empty', basket)
+        orderSummary.style.display = 'none'
+    }
+    
+}
+
+function updateTotal() {
+    document.querySelector('.total-price-num').textContent = `$${getTotalPrice()}`
+}
+
+function getTotalPrice() {
+    let total = 0
+    basket.forEach(function(menuItem) {
+        total += menuItem.price
+    })
+    return total
 }
 
 render()
