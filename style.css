@@ -73,7 +73,7 @@ header {
     line-height: 210%;
 }
 
-.menu-items {
+.menu-item {
     display: flex;
     justify-content: space-between;
     margin: 0 100px;
