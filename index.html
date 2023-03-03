@@ -21,8 +21,8 @@
         </div>
     </header>
     <main>
-        <section class="menu-items">
-        </section>
+        <section class="menu-items"></section>
+        <div class='success-msg'></div>
         <section class="order-summary">
             <h2 class="order-summary-title">Your order</h2>
             <div class="order-summary-breakdown">
@@ -34,12 +34,10 @@
             </div>
             <button class="place-order-btn">Complete Order</button>
         </section>
-        <div id="emoji"></div>
         <section class="payment-modal">
             <h1>Enter card details</h1>
             <div class="form-container">
-
-                <form>
+                <form class="payment-form">
                     <input 
                         type="text" 
                         name="fullname" 
@@ -56,7 +54,7 @@
                         name="cvv" class="cvv" 
                         placeholder="Enter CVV" 
                         required>
-                    <button type="submit">Pay</button>
+                    <button class="modal-pay-btn" type="submit">Pay</button>
                 </form>
             </div>
         </section>

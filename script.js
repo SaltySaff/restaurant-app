@@ -2,6 +2,8 @@ import { menuArray } from "./data.js";
 
 const basket = []
 const paymentModal = document.querySelector('.payment-modal')
+const paymentForm = document.querySelector('.payment-form')
+const successMsg = document.querySelector('.success-msg')
 
 // event listeners
 
@@ -13,9 +15,11 @@ document.addEventListener('click', function(e) {
         handleRemoveItem(e.target.dataset.itemRemove)
     }
     else if (e.target.className === 'place-order-btn') {
-        handleModal()
+        handleDisplayModal()
     }
 })
+
+
 
 function handleAddItem(itemId) {
     const targetObject = menuArray.filter(function(menuItem) {
@@ -38,15 +42,39 @@ function handleRemoveItem(itemId) {
     updateBasket()
 }
 
-function handleModal() {
+function handleDisplayModal() {
     paymentModal.style.display = 'flex';
     document.addEventListener('click', handleCloseModal)
-    function handleCloseModal(e) {
-        if (paymentModal.style.display = 'flex' && !paymentModal.contains(e.target)) {
-            paymentModal.style.display = 'none'
-            document.removeEventListener('click', handleCloseModal)
-        } 
+    paymentForm.addEventListener('submit', handleForm)
+}
+
+function handleCloseModal(e) {
+    if (paymentModal.style.display = 'flex' && !paymentModal.contains(e.target)) {
+        paymentModal.style.display = 'none'
+        document.removeEventListener('click', handleCloseModal)
     } 
+} 
+
+function handleForm(e) {
+    e.preventDefault()
+    const formData = new FormData(paymentForm)
+    const fullName = formData.get('fullname')
+    
+    emptyBasket()
+    updateBasket()
+    closeModal()
+    handleSuccessMessage(fullName)
+}
+
+function closeModal() {
+    paymentModal.style.display = 'none';
+    document.removeEventListener('submit', handleCloseModal)
+    document.removeEventListener('click', handleCloseModal)
+}
+
+function handleSuccessMessage(name) {
+    successMsg.style.display = 'block'
+    successMsg.textContent =  `Thanks, ${name}! Your order is on its way!`
 }
 
 // menu functions
@@ -82,6 +110,9 @@ function getMenuItems(){
 // basket functions
 
 function updateBasket() {
+    // ensure success message is hidden when adding new item
+    successMsg.style.display = 'none'
+    
     toggleBasket()
 
     let basketHtml = ''
@@ -113,6 +144,10 @@ function toggleBasket() {
         orderSummary.style.display = 'none'
     }
     
+}
+
+function emptyBasket() {
+    basket.splice(0, basket.length)
 }
 
 function updateTotal() {

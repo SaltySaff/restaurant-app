@@ -211,3 +211,15 @@ button[type="submit"] {
     border: none;
     cursor: pointer;
 }
+
+.success-msg {
+    display: none;
+    margin: 50px auto;
+    width: 500px;
+    padding: 50px 70px;
+    background-color: #ECFDF5;
+    color: #065F46;
+    font-size: 32px;
+    text-align: center;
+    box-shadow: 0 0 5px grey;
+}
