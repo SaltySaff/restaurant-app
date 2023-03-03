@@ -1,3 +1,5 @@
+/* general */
+
 html, body {
     margin: 0;
     padding: 0;
@@ -8,6 +10,53 @@ body {
     max-width: 900px;
     margin: auto;
 }
+
+
+/* typography */
+
+h1, h2, h3 {
+    font-weight: 400;
+    display: block;
+    margin: 0;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 22px;
+}
+
+.product-name {
+    font-size: 28px;
+}
+
+.ingredients {
+    color: #8B8B8B;
+    font-size: 16px;
+}
+
+.menu-price {
+    font-size: 20px;
+}
+
+.order-summary-title, 
+.order-title, 
+.total-price-title {
+    font-size: 28px;
+}
+
+.order-item-price,
+.total-price-num {
+    font-size: 20px;
+}
+
+.order-item {
+    font-size: 28px;
+}
+
+/* layout */
 
 header {
     display: flex;
@@ -24,17 +73,83 @@ header {
     line-height: 210%;
 }
 
-h1, h2, h3 {
-    font-weight: 400;
-    display: block;
+.menu-items {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 100px;
+    padding: 50px 0;
+    border-bottom: 1px solid lightgray;
 }
 
-h1 {
-    margin: 0;
-    font-size: 40px;
+.menu-container-left {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
 }
 
-h3 {
-    margin: 0;
-    font-size: 22px;
+.menu-img {
+    width: 100px;
+    font-size: 100px;
+}
+
+.menu-container-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-to-basket-btn {
+    width: 50px;
+    height: 50px;
+    border: 1px solid lightgrey;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.order-summary {
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+    margin: 50px 100px;
+    text-align: center;
+}
+
+.order-items-container {
+    margin-bottom: 15px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.order-item-left {
+    display: flex;
+}
+
+.order-total-price {
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid #393333;
+    padding-top: 15px;
+}
+
+.remove-item-btn {
+    border: none;
+    background-color: transparent;
+    color: #BBBBBB;
+    cursor: pointer;
+}
+
+.place-order-btn {
+    background-color: #16DB99;
+    border: none;
+    padding: 18px 0;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
 }

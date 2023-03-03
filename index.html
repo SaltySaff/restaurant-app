@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/emoji-toolkit@7.0.1/lib/js/joypixels.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/emoji-toolkit@7.0.1/extras/css/joypixels.min.css"/>
     <script src="script.js" type='module' defer></script>
     <title>Restaurant App</title>
 </head>
@@ -19,8 +21,76 @@
         </div>
     </header>
     <main>
-        <section class="menu-items"></section>
-        <section class="order-total"></section>
+        <section class="menu-items">
+            <div class="menu-container-left">
+                <div class="menu-img">🍕</div>
+                <div class="menu-text">
+                    <h2 class="product-name">Pizza</h2>
+                    <p class="ingredients">pepperoni, mushroom, mozarella</p>
+                    <h3 class="menu-price">$14</h3>
+                </div>
+            </div>
+            <div class="menu-container-right">
+                <button class="add-to-basket-btn">+</button>
+            </div>
+        </section>
+        <section class="menu-items">
+            <div class="menu-container-left">
+                <div class="menu-img">🍔</div>
+                <div class="menu-text">
+                    <h2 class="product-name">Hamburger</h2>
+                    <p class="ingredients">beef, cheese, lettuce</p>
+                    <h3 class="menu-price">$14</h3>
+                </div>
+            </div>
+            <div class="menu-container-right">
+                <button class="add-to-basket-btn">+</button>
+            </div>
+        </section>
+        <section class="menu-items">
+            <div class="menu-container-left">
+                <div class="menu-img">🍺</div>
+                <div class="menu-text">
+                    <h2 class="product-name">Beer</h2>
+                    <p class="ingredients">grain, hops, yeast, water</p>
+                    <h3 class="menu-price">$12</h3>
+                </div>
+            </div>
+            <div class="menu-container-right">
+                <button class="add-to-basket-btn">+</button>
+            </div>
+        </section>
+        <section class="order-summary">
+            <h2 class="order-summary-title">Your order</h2>
+            <div class="order-summary-breakdown">
+                <div class="order-items-container">
+                    <div class="order-item">
+                        <div class="order-item-left">
+                            <h2 class="order-item">Pizza</h2>
+                            <button class="remove-item-btn">remove</button>
+                        </div>
+                        <div class="order-item-right">
+                            <h3 class="order-item-price">$14</h3>
+                        </div>
+                    </div>
+                    <div class="order-item">
+                        <div class="order-item-left">
+                            <h2 class="order-item">Burger</h2>
+                            <button class="remove-item-btn">remove</button>
+                        </div>
+                        <div class="order-item-right">
+                            <h3 class="order-item-price">$12</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-total-price">
+                    <h2 class="total-price-title">Total price:</h2>
+                    <h3 class="total-price-num">$14</h3>
+                </div>
+            </div>
+            <button class="place-order-btn">Complete Order</button>
+        </section>
+        <div id="emoji"></div>
     </main>
     
 </body>
