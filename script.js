@@ -1,6 +1,7 @@
 import { menuArray } from "./data.js";
 
 const basket = []
+const paymentModal = document.querySelector('.payment-modal')
 
 // event listeners
 
@@ -10,6 +11,9 @@ document.addEventListener('click', function(e) {
     }
     else if (e.target.dataset.itemRemove) {
         handleRemoveItem(e.target.dataset.itemRemove)
+    }
+    else if (e.target.className === 'place-order-btn') {
+        handleModal()
     }
 })
 
@@ -32,6 +36,17 @@ function handleRemoveItem(itemId) {
         }
     })
     updateBasket()
+}
+
+function handleModal() {
+    paymentModal.style.display = 'flex';
+    document.addEventListener('click', handleCloseModal)
+    function handleCloseModal(e) {
+        if (paymentModal.style.display = 'flex' && !paymentModal.contains(e.target)) {
+            paymentModal.style.display = 'none'
+            document.removeEventListener('click', handleCloseModal)
+        } 
+    } 
 }
 
 // menu functions
@@ -93,10 +108,8 @@ function updateBasket() {
 function toggleBasket() {
     const orderSummary = document.querySelector('.order-summary')
     if (basket.length > 0) {
-        console.log('full', basket)
         orderSummary.style.display = 'flex'
     } else {
-        console.log('empty', basket)
         orderSummary.style.display = 'none'
     }
     
